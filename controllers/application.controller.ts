@@ -22,13 +22,12 @@ export const submitApplication = catchAsync(async (req: Request, res: Response) 
     try {
         const { fullName, email, phone, interests } = req.body;
         const cvFile = req.file; // Changed from req.files to req.file
-        console.log(cvFile.fieldname, cvFile.originalname)
 
         let cvAttachment = null;
         if (cvFile) {
             cvAttachment = {
                 ...cvFile,
-                path: `${req.protocol}://${req.get('host')}/uploads/${cvFile.filename}`,
+                // path: `${req.protocol}://${req.get('host')}/uploads/${cvFile.filename}`,
             };
         }
 
